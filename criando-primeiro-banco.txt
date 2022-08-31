@@ -1,0 +1,188 @@
+o curso em video não vai estudar modelo relacional
+
+vamos pegar uma pessoas
+Godofredo 
+32anos
+masc
+78.5kg
+1.83m
+Brasil
+
+essas são as caracteristicas que ele tem
+
+ele tem uma parceira chamada 
+Dolores
+30anos
+fem
+52.3kg
+1.65m
+Mexico
+
+São duas pessoas com caracteristicas semelhantes
+
+Do amor dos dois surge sua filha 
+Godolores
+3anos
+25.8kg
+0.89m
+EUA
+
+#essas 3 pessoas tem caracteristica semelhantes- caracteristica em comum:
+nome
+idade
+sexo
+peso
+altura
+nacionalidade
+
+cada um tem tem seu proprio nome, idade, altura etc que faz que cada seja uma instancia, isso faz pessoas diferentes umas das outras 
+
+OBJETIVO do banco de dados:
+Registrar instancias separadas de coisas que tem caracteristicas semelhantes
+
+usando esse padrão eu posso cadastrar qualquer tipo de pessoa, porque todas  elas terão a mesma caracteristicas
+IMPORTANTE: Tem semelhanças na caracteristicas e não em valores(mesma idade por exemplo)
+
+podemos pegar todas essas pessoas e por em um conteiner e chama-lo de pessoas
+to vez que querer guardar uma pessoas vamos guardar ai
+Pessoas dentro desse conteiner vão ter essa caracteristicas
+*algumas dessas caracteristicas podem ser opcionais, mas existe a possiblidade de cadastro dela
+
+Podemos criar conteiners diferentes para coisas diferentes, por ex:
+posso ter um que coloque todas as caracteristicas de jogos
+
+pessoas e jogos possuem caracteristicas diferentes e por isso precisam estar em conteiners diferentes
+
+	No mundo banco de dados vou agrupar coisas que tem caracteristicas semelhantes e separar de coisas que tem caracteristicas diferentes
+Todas as coisas agrupadas em containers compartilham caracteristicas semelhantes
+
+Vamos pegar esses dois containers, pessoas e jogos e vamos colocar dentro de um navio, porque as duas são importantes pra mim.
+No banco de dados cada um tem um nome
+o navio é o banco de dados, que são coleção de dados, que são de caracteristicas separadas, mas que são organizadas em locais especificos
+
+esses locais especificos são as tabelas, que no exemplo são os containers
+Tabelas guardam dados de coisas que possuem caracteristicas semelhantes.
+Pode ter varias tabelas dentro do banco de dados
+
+Os dados dentro das tabelas são os registros, que no exemplo são as pessoas ou jogos
+
+Resumindo:
+Banco de dados são conjuntos de tabelas
+Tabelas são conjuntos de registros
+
+Então para dar inicio a primeira coisa que precismos criar é o banco de dados
+É um comando simples
+
+CREATE DATABASE cadastro;
+
+Voce diz pra criar um banco de diz seu nome
+
+#OBS: Para começar a programar em sql, primeiro voce deve executar o wampserver para depois abrir o ambiente de desenvolvimento
+
+vamos por aquele comando para criar banco de dados
+
+Voce pode digitar o comando em mausculo, minusculo, voce que escolhe, tanto faz
+
+para executar o comando voce vai clilcar no raiozinho que tem um tracinho em pé(executar o comando que esta selecionado)
+
+na parte OUTPUT mostra se o comando foi realmente executado
+
+Tem o conceito de linhas afetadas, é usada para dizer em quantas linhas foram modificadas
+não tinhamos um banco, agora alteramos 1 linha
+
+La lado esquerdo  temos SCHEMAS
+mostra os bancos de dados. Banco selecionado, dentro dele tem tabelas, views, funcoes etc
+
+criamos o banco, agora partir para as tabelas 
+
+Para criar tabelas precisamos relembrar que no conteiners tem caracteristicas padronizadas para todos eles 
+Pessoas cadastras vão ter 
+nome, idade, sexo, peso, altura, nacionalidade
+Essas caracteristicas são chamadas de CAMPOS
+
+Banco de dados contem tabelas que contem registros que são compostos por campos
+
+para criar uma tabela usa esse comando 
+CREATE TABLE pessoas (
+
+);
+
+dentro da tabela pessoas vamos colocar os campos 
+voce poe virgula depois de cada um, menos no ultimo campo
+Agora temos que dizer qual é o tipo de cada campo, como nos algoritmos
+
+Os tipos de dados tem familiias e eles são sub-divididos
+
+		Tipos Primitivos
+Numérico(inteirio, real, logico)
+Data/tempo
+Literal (Caractere, texto, binario, coleçoes)
+Espacial
+
+Cada um desse tipo tem precições diferentes
+
+O tipo inteiro tem varios tipos de precisoes diferentes como -> TinyInt, SmallInt, Int, MediumInt, BigInt
+A diferenças entre eles é quantos Bytes vão utilizar para armanezar esse dado
+TinyInt utiliza muito menos byte para armanezar do que o BigInt
+ex: para cadastrar idade voce não precisa utilizar um "int", como uma pessoa vive normal até 100, um TinyInt já é o suficiente
+
+#literal
+O caractere possui a precisão char e varchar
+A diferença que o char e varchar
+se voce dizer um char com 30 letras, vai ficar reservado 30 letras, mas se voce utilizar apenas duas, vai desperdiçar o resto
+O varchar seria reserver espaço para até 30 letras,  ele só utiliza o que precisa(se sobrar ele não vai ocupar esse espaço)
+
+Qual a diferença entre o tipo CARACTER do TEXTO
+Texto é para quando ser quer guardar  textos grandes, como descrição de uma pessoa
+quando voce quer  pequeno texto como nome de alguem, endereço, telefone use o Caractere
+
+No binario tem blod que da para armanezar uma imagem, mesmo que não seja recomendado guardar imagens dentro de banco de dados
+
+No tipo Coleção temos precisão Enum e Set - onde neles voce pode configurar quais são os valores permitidos
+
+melhor que o usuario pode escolher apenas opções, como sexo, voce poe que o usario escolha entre F ou M e não que ela possa digitar o que quer
+
+O Tipo Espacial é novo no mysql
+
+vamos por os tipos no banco
+
+A idade ele colocou TinyInt(3) esse 3 refere a quanitdade de byts mas não precisa por ele. Por curiosidade o interio tem armaneza 11Btys
+
+Basicamente um comando Sql não é composto pela quantidade  linhas, a criação da tabela utiliza 8 linhas, mas é apenas 1 comando. O simbolo de ponto e virgula ";" indica o fim do comando
+
+	Para voce criar uma tabela é preciso ter um banco de dados aberto, que utilizamos o comando 
+use cadastro;
+
+use e o nome do banco
+
+voce pode ver esse comando 
+	describe pessoas;
+onde nele é descrito todos os campos e os tipos de dados usados
+
+#OBS: Da para utilizar todos esses comandos no terminial(wampserver)
+La voce pode começar pelo comando 
+show databases;
+para mostrar todas as tabelas que existem
+
+para saber qual banco de dados esta aberto, utilize o comando
+use cadastro; e logo depois status;
+La tem Current database:    cadastro
+
+e para ver quais tabelas tem lá utilizamos
+show tables;
+
+e por ultimo pedimos para ele descrever a tabela pessoa com 
+describe pessoas;
+(não precisa dizer table)
+
+Utilizamos a interface porque fica mais bonitinha e mais clara
+
+IMPORTANTE
+No Sql é importante voce aprender os comandos, aprender a linguagem mesmo e no PHP podemos usar os comandos Sql lá
+não use autocomplete nos comandos ou clicar para fazer as coisas
+
+para sair do terminal utilize exit
+
+Do lado da tabela no mysql workbech tem o icone de 'i' que ele mostra informações do banco de dados
+
+esse banco de dados apresenta alguns problemas, como cadastrar idade e outra coisa é que do jeito simples que ta da para cadastrar a mesma pessoas varias formas, precisamos de uma  chava identificadora que cada pessoa tenha seu número

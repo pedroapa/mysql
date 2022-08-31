@@ -1,0 +1,87 @@
+banco de dados
+
+No começo as informaçoes era salvas em papeis, que era guardados em pastas e depois em arquivos de metalicos. 
+era unica maneira de guaradar dados
+
+no mundo da informatica o papel, pasta e arquivo tem outros nomes
+fichas são registros
+pasta como tabelas
+armarios como arquivos
+
+um armario grande guarda pastas, que por sua vez guardam fichas
+
+em TI
+arquivos guardam tabelas, que guardam registros
+
+no começo, eles tinham muito papeis e foi um desafio digitalizar tudo isso
+
+
+inicialmente as fichas eram guardadas umas atras da outras grudadas, porque o armanezamento era fitasa magneticas ou cartoes perfurados erão sequeciais.
+para ler o meio da fita, voce precisava ler desde o começo até chegar aonde voce quer
+varrer do primeiro até achar qual registro que deseja
+esses arquivos são chamados de arquivos sequenciais
+isso trazia uma lentidão
+
+apesar de hoje parecer algo bem ruim e velho, mas isso era melhor do que guardar a informação em fichas de papel. Estranhamos porque olhamos como a nossa lente de agora. Não é porque uma tecnologia hoje é boba que no tempo que ela foi desenvolvida foi o melhor do que havia
+
+"O que a gente tem hoje é melhor do que tinhamos antes e o que ta para vir propavelmente vai ser melhor do que temos hoje"
+
+Depois surgiram os discos, os disquetes, hd. Eles guardam as informaçoes diretas, porque       não precisa ler o começo para saber o que tem no meio. voce pode ir direto para o que quer
+os registros eram guardados por indexes(chaves registradoras de cada registros) e com eles podimos ir direto para o que queriamos
+a forma de encontar os dados ficaram mais rapidos porque era direto e indexado
+Esse arquivos são chamados de Acesso direto
+
+porem esse indexes eram coisas bem simples e ainda não era a solução
+
+Dec. 60o departamento de defesa, queria armanezar dados de maneira segura e inteligente. 
+Criaram um evento para discurtir tecnologias, entre militares, academia e da surgiu uma linguagem muito importante da historia
+COBAL- linguagem se preocupou tanto com a lógica de programação, mas também com os dados
+a estrutura de dados eram importante pro COBAL
+
+la também surgiu uma nova tecnologia, surgiu lá o banco de dados
+ela tem 4 partes
+
+	#base de dados- estrutura
+	#sistema gerenciador - sgbd
+	#linguagem de exploração - quem acessa o banco não é a linguagem de programação, então por que ter uma linguagem de exploração?
+
+na teoria voce não precisaria aprender varias linguagens que fosse surgindo para mexer no banco, a ideia era voce ter que aprender apenas uma de acesso ao dados.
+	#Programas adicionas- gerencia de usarios, tudo que tiver extra
+
+teve uma empresa IBM que foi importante para construção e desenvolvimento dos bancos dos dados 
+
+Ela propos que os dados fossem organizados em forma hierarquia, que tivesse uma ligação simples, mas de forma hierarquia
+esse modelo foi conhecido como modelo hierarquio
+
+
+
+Depois foi proposto um modelo que não teria um dado que fosse superior ou inferior, eles estariam ligado em rede. São chamados de modelo rede
+
+com esses dois modelos me deixava guardar informações dos meus clientes, dos meus serviços, funcionarios, meus fornecedores
+sem problema nenhum, mas eles não facilitavam o relacionamento
+
+não facilitavam os relacionamentos entre os dados entre eles
+relacionar um conjunto de registros a outro conjunto de registros
+que ta em outra tabela
+
+criaram outro modelo
+nesses os dados iriam ter relações
+
+Esse modelo permite:
+tenho um banco de dados e tenho cadastro de um cliente, guardo a ficha no banco de dados e tenho acesso a todos os dados do meu cliente. Qualquer modelo tem acesso ao isso, mas o relacional da um passo a frente. Posso por ex:
+Identificar onde ele mora, quais foram as compras que que ele fez, apartir delas, posso ter acesso a data que elas foram feitas e qual foi influencia que ela teve no meu estoque e por acaso esse estoque ficar baixo, eu tenho aceso diretamente ao meu fornecedor.
+
+é valioso esse novo paradigma, apartir de um dado armazenado, é possivel caminhar pelos dados bastando que eles tenham uma relação entre eles e o criador que especifica essas relaçoes
+
+vamos aprender a linguagem que cria o banco e os relacionamentos
+ela  ja teve varios nomes 
+Structured Query Language - sql
+
+A ideia era que tivesse apenas uma linguagem sql, mas cada fabricante fez a sua
+isso gerou uma despradonição
+
+ansi e iso
+
+dai surgiram varios banco de dados como ORACLE, IBM, DBASE, SQLSERVER (solucoes pagas)
+bancos gratuitos e bons MYSQL, MARIADB, 
+ a outro
