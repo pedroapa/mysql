@@ -10,3 +10,7 @@ peso float,
 altura float,
 nacionalidade varchar(20)
 );
+
+drop database cadastro;
+
+drop table pessoas;
