@@ -1,0 +1,133 @@
+SHOW COLUMNS FROM cidade;
+
+parece que o livro foi feito para ser lido duas vezes, ou mais de uma, quando voce ja tem um determindado conhecimento, porque na primeira seção ja fala de SELECT e sobre alguns comandos, sendo que no inicio são bastante coisas e a pessoa fica confusa.
+
+“Encontre os nomes de
+todas as cidades na tabela cidade”.
+SELECT Nome
+FROM cidade;
+
+“Encontre todos os nomes de cidades que
+tenham uma população inferior a 100000”.
+SELECT Nome, Populacao
+FROM cidade
+WHERE Populacao < 100000;
+
+Para simplificar algumas operações utilizado o WHERE, existe
+o BETWEEN:
+SELECT Nome, Populacao
+FROM cidade
+WHERE Populacao BETWEEN 90000 AND 100000;
+Em vez de:
+SELECT Nome, Populacao
+FROM cidade
+WHERE Populacao >= 90000 AND Populacao <= 100000;
+
+
+“Encontre todas os nomes e população das cidades e
+línguas do seu país”,
+SELECT cidade.Nome, cidade.Populacao,
+linguapais.Linguagem
+FROM cidade, pais, linguapais
+WHERE cidade.CodigoPais = pais.Codigo AND
+pais.Codigo = linguapais.CodigoPais;
+
+
+“Encontre todos os nomes e população das
+cidades e dos países que falem Português”
+SELECT cidade.Nome, cidade.Populacao,
+linguapais.Linguagem
+FROM cidade, pais, linguapais
+WHERE cidade.CodigoPais = pais.Codigo AND
+pais.Codigo = linguapais.CodigoPais AND
+linguaPais.Linguagem = "Português";
+
+“Encontre todos os nomes e população das cidades e línguas do
+seu país”
+SELECT C.Nome, C.Populacao, L.Linguagem
+FROM cidade as C, pais as P, linguapais as L
+WHERE C.CodigoPais = P.Codigo AND
+P.Codigo = L.CodigoPais;
+
+“Encontre os nomes de todas as cidades na tabela cidade
+com nomes iniciados por ‘Sor’”
+SELECT Nome
+FROM cidade
+WHERE Nome like ‘Sor%’;
+
+“Encontre os nomes de todas as cidades na tabela cidade,
+ordenadas por nome”
+SELECT Nome
+FROM cidade
+ORDER BY Nome;
+
+“Encontre os nomes de todas as cidades na tabela
+cidade ordenados por nome em ordem decrescente”
+SELECT Nome
+FROM cidade
+ORDER BY Nome DESC;
+
+Quando pegar um banco de dados ja criado, investigue ele atraves desses comandos
+USE world;
+primeiro devemos informar que vamos utiliza-lo para podemos ter acesso a ele
+
+Agora vamos descobrir quantas tabelas existem neste BD
+SHOW TABLES;
+
+Depois de escolher uma para ver detalhadamente com o comando 
+SHOW COLUMNS FROM nome-tabela;
+
+Com isso podemos ver também os relacionamento entre as tabelas e apartir dai criarmos um DER()
+
+OBS:
+Após estabelecer os relacionamentos existentes, verifique se de fato
+eles estão consistentes, usando a DQL com a instrução SELECT.
+
+Essas análises são vitais quando um banco de dados não
+foi desenvolvido por você.
+
+Isso acontece muito nos ambientes
+profissionais, nos quais é preciso verificar qual foi o modelo
+conceitual que uma outra equipe elaborou para determinado
+banco de dados.
+
+Além disso, é necessário testar se há consistência
+nos relacionamentos, criando consultas simples e, gradualmente,
+ao passo que verifica as tabelas, com seus campos e valores
+armazenados, você pode certificar-se de que os relacionamentos
+estão de fato estabelecidos.
+
+Como exemplo, podemos consultar:
+
+* “Encontre os nomes de todas as cidades na tabela cidade com
+nomes iniciados por ‘Sor’”:
+SELECT Name
+FROM city
+WHERE Name LIKE ‘Sor%’;
+
+* “Encontre os nomes e a população de todas as cidades com
+nomes iniciados por ‘Sor’”:
+SELECT Name, Population
+FROM city
+WHERE Name LIKE ‘Sor%’;
+
+* “Encontre os nomes, sua população e os países em que se
+encontram, para todas as cidades com nomes iniciados por ‘Sor’”:
+SELECT city.Name, city.Population,
+country.
+Name
+FROM city, country
+WHERE city.Name LIKE 'Sor%' AND city.
+CountryCode = country.Code;
+
+Quanto mais consultas com relacionamentos forem criadas, mais
+consistente seu banco de dados se demonstrará. Pronto! Você conseguiu
+demonstrar que tem o conhecimento necessário para a próxima etapa.
+
+Acho que entendi porque ja no inicio o livro taca tanta coisa, porque ele queria que tivermos um pouco conhecimento para testar se a fase de modelagem conceitual foi bem desenvolvida, para isso precisamos fazer consultas utilizando select e especificando mais os relacionamentos em cada consulta.
+
+1c
+2a
+3d
+
+livro focou em o que fazer quando voce receber um banco que não foi desenvolvido por voce e ensinou como testar para ver se o modelo conceitual foi bem desenvolvido, se não quando for fazer consulta envolvendo relacionamentos a saida aparecerá com erro
