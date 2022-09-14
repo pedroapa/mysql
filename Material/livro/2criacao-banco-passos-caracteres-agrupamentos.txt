@@ -1,0 +1,75 @@
+sera que eu leio o livro antes de voltar a ver a video aula?
+
+No futebol, por exemplo,
+chutes a gol ou escanteios concedidos são dados relevantes. Um
+goleiro que sabe que um determinado jogador cobrou o último
+pênalti do lado esquerdo do gol, por exemplo, tem um dado em
+suas mãos. Tem utilidade? Tem, mas é uma utilidade limitada,
+não é mesmo? E se ele juntar vários dados e descobrir que nos
+últimos 30 pênaltis cobrados o jogador à sua frente mandou a bola
+à meia altura, do lado esquerdo em 18 cobranças? Bem, aí ele já
+está correlacionando dados, e acaba de obter uma informação que
+pode ser bem mais útil que o dado isolado: se pular à meia altura
+para o lado esquerdo, talvez tenha mais chances de defender o
+pênalti. O poder dos bancos de dados é este: permitir que façamos
+correlações com os dados e deles extraiamos informações úteis.
+
+Quando vamos construir uma casa, não saímos assentando
+alicerces e levantando paredes. O procedimento correto exige que,
+antes da execução, haja planejamento. Antes de levantarmos uma casa,
+precisamos de um projeto arquitetônico, de um documento de cálculo
+estrutural, de um projeto hidráulico e de um projeto elétrico. Isso tudo
+tem que ser muito bem pensado e esquadrinhado antes de fazermos
+sequer um furo no solo, ou de assentarmos um tijolo que seja.
+
+<http://local.joelonsoftware.com/wiki/O_M%C3%ADnimo_
+Absoluto_Que_Todo_Desenvolvedor_de_Software_Absolutamente%2C_
+Positivamente_Precisa_Saber_Sobre_Unicode_e_Conjuntos_de_
+Caracteres_(Sem_Desculpas!)>.
+
+fazer um backup hoje para testar, posso fazer daquele exercicio que eu tinha feito
+
+o livro iniciou explicando quais são os passos para criar um banco de dados, depois explicou sobre representação de caracteres, que pode ser internacional, ou latin que é uma subconjunto das linguas latinas
+
+usar o 
+"default character set uft8
+default collate utf8_general_ci;
+"
+
+falou também de usar 'if not exists'  significa 'se não existe' e  usamos para evitar erro caso o banco ja exista
+
+o livro usa situação ficticia de um guia turistico e essa são as tabelas basicas que tem:
+
+* Países – armazenar os dados sobre nome, continente, área,
+ano de independência, população, expectativa de vida, forma
+de governo, capital, moeda.
+
+* Estados – armazenar os dados sobre nome, sigla, região, capital.
+
+* Cidades – nome, população, data de criação.
+
+* Pontos de interesses turístico – podemos entender como
+pontos de interesse público:
+
+	- Os atrativos turísticos existentes na região (naturais,
+culturais, atividades econômicas, realizações técnicas,
+científicas e artísticas e eventos programados).
+
+	- Os serviços e equipamentos turísticos (de hospedagem,
+alimentação, agenciamento, transporte, eventos, lazer
+e entretenimento, etc.).
+
+	- A infraestrutura de apoio ao turismo (meios de
+acesso ao município, sistema educacional, médicohospitalar,
+de comunicações, de transportes, de
+segurança, entre outros.).
+
+	- As instituições e organizações responsáveis pelo
+desenvolvimento da atividade turística (órgãos estaduais
+de turismo, fóruns e conselhos estaduais regionais e
+municipais de turismo, etc.).
+
+1d
+2d
+3b
+
