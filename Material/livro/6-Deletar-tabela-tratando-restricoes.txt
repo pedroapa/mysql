@@ -1,0 +1,22 @@
+Nesta seção mostrou o comando para excluir uma tabela, mas foi mais que isso, tabelas tem relacionamentos e isto cria restrições que impedem que uma tabela seja apagada se sua chave primaria for referencia a outra tabela.
+
+A tabela pai tem sua chave primaria na tabela filha, então não da para simplesmente apagar a tabela pai.
+Uma forma de apagar uma tabela mesmo com restrição, é primeiro apagando a restrição
+ex:
+alter table 
+drop foreign key nome_ibfk_1;
+
+
+Esse nome estranho é nome da restrição que é renomeada quando não deixamos um nome explicito. A chave  estrangeira é o relacionamento entre duas tabelas
+
+Então imagina com o projeto já madurecido, querer apagar uma tabela que ja tem sua estrutura, dados e relacionamentos já especificados. Não é uma coisa que deveria acontecer  tão tarde assim, mas pode acontecer.
+
+Outra forma de contornar isso, é mudando no sistema para que a restrições sejam ignoradas(depois é preciso ativa-las) com  o comando
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+aqui ele esta atividado, para desativar basta por zero no lugar de um e já é possivel excluir a tabela pai sem problemas
+
+1a
+2c
+3d
