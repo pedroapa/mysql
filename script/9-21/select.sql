@@ -1,0 +1,23 @@
+use cadastro;
+
+select ano, nome, carga  from cursos
+order by ano, nome;
+
+select * from cursos;
+
+select * from cursos
+where ano = '2016'
+order by nome;
+
+show tables;
+
+describe cursos;
+
+select  nome, descricao, ano  from cursos
+where ano != '2016'
+order by ano, nome;
+
+select nome, ano from cursos
+where ano between '2014' and '2016'
+order by ano desc, nome;
+
