@@ -1,0 +1,5 @@
+exer4: "Uma lista com os dados de todas mulheres que nasceram no Brasil e que têm seu nome iniciando com a letra J"
+
+para usar o like, tem que ter uma coluna para usar como referencia
+
+ex: nome like 'P%'
