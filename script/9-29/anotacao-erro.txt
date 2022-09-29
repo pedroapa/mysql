@@ -1,0 +1,16 @@
+/*Eu estava colocando o valor errado no group by e não tava dando a saida esperada
+Queria que saisse como o professor, mas aparecia apenas aquela saida, não mostrava a quantidade de cursos com a mesma carga horaria
+CODIGO:
+
+select carga, count(nome) from cursos
+where totaulas = '30'
+group by totaulas;
+
+
+depois de pensar bem e ficar tentando achar o erro, descobri que esta pedindo para agrupar o campo errado, queria saber carga horaria, mas coloquei totaulas
+
+select carga, count(nome) from cursos
+where totaulas = '30'
+group by carga;
+
+assim resolve o problema. Daora que eu encontrei sem comparar com o codigo do professor Guanabara*/
