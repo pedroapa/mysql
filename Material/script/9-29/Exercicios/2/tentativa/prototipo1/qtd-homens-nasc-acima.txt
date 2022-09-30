@@ -28,4 +28,18 @@ S:
     count(*)
     39
 
-Blz, onde vai ficar a condição de quem nasceu depois? No where ou having? To achando que o no where 
+Blz, onde vai ficar a condição de quem nasceu depois? No where ou having? To achando que o no where porque ja to filtrando todos os registro por idade
+
+outro problema é na hora de apresentar a resposta, teria que utilizar dois count? Se sim como faria para cada count mostrar só sua resposta?
+
+descobri que o select mostra o que voce mandar. Este codigo:
+
+select 15 from gafanhotos;
+
+faz aparecer 15 registros com o resultado 15
+
+entao quando eu usar o select como parametro, tenho que achar um lugar certo para ele. 
+Se usar no SELECT, uma alternativa para não sair varias linhas repetidas é usando o comando distinct
+
+talvez seja outro lugar que é para colocar
+
