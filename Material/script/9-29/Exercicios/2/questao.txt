@@ -20,3 +20,13 @@ prototipo:
 
 conseguir fazer um questionamento que mostre a quantidade de homens que nasceram depois de 1-1-2005
 
+pode ter acontecido de eu não ter entendido de primeira o que a questão pede
+escrito diz pra saber tanto de homens, quanto mulheres e não que separados...
+
+uma coisa é certa, ta ambigua, 1° sentido: mostrar quantos homens e depois quantas mulheres nasceram depois
+e 2º considerando os dois juntos, quantos nasceram depois de uma data.
+
+O segundo faz mais sentido pelo que aprendemos ate agora
+
+
+

@@ -18,4 +18,11 @@ select 15 from gafanhotos;
 
 /* "Selecione contabilizando a quantidade de homens da tabela gafanhotos"*/
 select count(*) from gafanhotos
-where sexo = 'M';
+where sexo = 'M' && nascimento > '2005-1-1';
+
+/*Outra interpretação
+ Contar os dois juntos*/
+
+select count(*) from gafanhotos
+where nascimento > '2005-1-1'
+group by sexo;
