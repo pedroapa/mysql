@@ -7,6 +7,7 @@ describe gafanhotos;
 select * from gafanhotos;
 
 select count(*) from gafanhotos
+where nascimento > '2005-1-1'
 group by sexo
 having sexo = 'M';
 
