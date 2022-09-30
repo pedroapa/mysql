@@ -11,8 +11,10 @@ where nascimento > '2005-1-1'
 group by sexo
 having sexo = 'M';
 
-select (select count(*) from gafanhotos group by sexo having sexo = 'M') from gafanhotos;
+select distinct (select count(*) from gafanhotos group by sexo having sexo = 'M'),
+ (select count(*) from gafanhotos group by sexo having sexo = 'F') from gafanhotos;
 
+select 15 from gafanhotos;
 
 /* "Selecione contabilizando a quantidade de homens da tabela gafanhotos"*/
 select count(*) from gafanhotos
