@@ -23,3 +23,10 @@ limit 1;
 /*Parte do JOIN ou INNER JOIN*/
 select * from gafanhotos;
 select nome, cursopreferido from gafanhotos;
+
+/*Inicialmente*/
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano from gafanhotos join cursos;
+
+/*Completando*/
+select gafanhotos.nome, cursos.nome, cursos.ano from gafanhotos join cursos
+on cursos.idcurso = gafanhotos.cursopreferido;
