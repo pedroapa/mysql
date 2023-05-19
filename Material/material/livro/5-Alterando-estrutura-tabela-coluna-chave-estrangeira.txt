@@ -1,0 +1,157 @@
+É possível fazer estas alterações sem a necessidade de reconstruir
+toda a base de dados e todas as tabelas? E o que acontece com os
+dados já existentes?
+
+Quando temos a necessidade de provocar alterações na estrutura de
+uma tabela, temos que nos certificar de executar essa instrução com o
+banco de dados sem nenhum acesso.
+
+Para você alterar o valor do campo auto incremento de uma
+tabela, você utilizará a instrução:
+ALTER TABLE cliente AUTO_INCREMENT = 13;
+
+Vamos supor
+que seu banco de dados esteja especificado com o padrão UTF-8.
+Todas as tabelas que você criar estarão utilizando este padrão e, por
+uma questão de algum requisito específico, você necessita alterar uma
+tabela com outra cadeia de caracteres, neste caso o LATIN-1. Para
+isso, a instrução seria:
+ALTER TABLE pessoas CHARACTER SET = latin1;
+Após a execução dessa instrução, todas as tabelas criadas estarão
+utilizando o charset UTF-8, com exceção da tabela “pessoas”.
+
+
+Você deve ficar atento a algumas condições quando for fazer
+exclusão de colunas:
+•Se uma tabela contiver apenas uma coluna, a coluna não
+poderá ser eliminada.
+• Se o que você pretende é remover a tabela, use a instrução
+DROP TABLE.
+
+
+• RENAME COLUMN: pode alterar o nome de uma coluna, mas
+não sua definição, sendo um comando mais conveniente
+do que CHANGE para renomear uma coluna sem alterar
+sua definição pois exige apenas os nomes antigos e novos.
+Observe a seguinte instrução que está renomeando, na
+tabela “pessoas”, o campo chamado “novo” para “antigo”
+ALTER TABLE pessoas RENAME COLUMN novo TO antigo;
+
+
+Usando restrições (constraints)
+Agora, vamos supor que você deseja alterar sua chave primária,
+ela conterá duas colunas e não apenas uma. Primeiro você deverá
+retirar a chave primária declarada:
+ALTER TABLE pessoa
+DROP PRIMARY KEY;
+Após isso, será necessário a nomeação de uma restrição PRIMARY
+KEY, e para defini-la em várias colunas, use a seguinte sintaxe SQL:
+ALTER TABLE pessoa
+ADD CONSTRAINT PK_pessoa PRIMARY KEY (id,
+sobrenome);
+Nesse momento, você está declarando em sua tabela “pessoa”
+uma chave primária composta, com o nome de PK_pessoa e os
+dois campos que a compõe.
+
+indece é coisa para acelerar
+
+meio que a tabela filha precisa ter um campo que seja igual a da tabela pai. Então ela cria esse campo e então como este campo novo vai ter os mesmos dados que o pai? 
+Voce precisa deixar claro que ali vai ser uma chave estrangeira e voce passa o id do pai como referencia
+
+Com esses qualificadores, as duas tabelas serão criadas,
+e podemos notar um campo de relacionamento entre elas,
+demonstrado pelo campo parente_id na tabela filha. Por exemplo,
+vamos criar uma integridade referencial entre as tabelas, utilizando
+esse relacionamento por meio da seguinte instrução:
+ALTER TABLE filha
+ADD CONSTRAINT FK_parente
+FOREIGN KEY (parente_id) REFERENCES pai(id);
+
+tabela filha é aquela que esta   os n da cardinalidade
+melhor relatar problemas para eles do que os superiores
+
+Problema que pode ocorrer por causa de apagar um registro no pai e isso afetar a tabela filha:
+Você está recebendo a responsabilidade de criar uma integridade
+referencial entre duas tabelas. A tabela que contém notas fiscais tem em sua estrutura uma coluna chamada cliente_id. Essa coluna tem uma restrição determinando sua integridade referencial com a tabela de clientes. Porém, ao excluir um cliente, a restrição não inibe essa ação, mesmo que exista uma nota fiscal com o mesmo cliente que foi excluído.
+
+Visão ampla, o banco de dados é a faculdade e as tabelas são as entidade que eu quero salvar as informações
+
+sera que teria como usar o renpy junto com o banco de dados?
+
+1b
+2c
+3e
+
+esse problema de excluir um registro na tabela pai e ele continuar salvo na tabela filha, esse problema parece que aconteceu aqui. Era tipo o evento ja foi excluido e continuar salvo em alguma parte do banco
+
+IMPORTANTE: Reler a unidade 2 seção 2 quando ter visto sobre SELECT e relacionamento
+
+		RESUMO
+
+Mostrou que em um projeto, idealmente você planeja ela bem e não vai precisar fazer mudanças na estrutura, mas caso ele esteja no começo, isso pode acontecer
+
+É mostrado que podemos alterar a estrutura de uma tabela, sendo inserir uma coluna nova  ou até apagar uma que ja existe. Podemos também alterar o seu nome, ou seu tipo e por fim mudar o nome de uma tabela.
+	
+O comando
+ALTER TABLE nome_tabela
+ ADD COLUMN nome_campo tipo_dados [configurações];
+ adiciona uma coluna
+
+O 
+ALTER TABLE nome_tabela
+DROP COLUMN nome_campo;
+comando deleta uma coluna
+
+Ja o 
+ALTER TABLE nome_tabela
+MODIFY COLUMN nome_campo tipo_dado [configurações];
+Podemos alterar o tipo e as configurações de uma coluna, como por exemplo dizer que é NOT NULL
+
+Quando queremos mudar o nome de uma coluna
+ALTER TABLE nome_tabela
+CHANGE COLUMN nome_antigo_campo nome_novo_campo tipo_dado [configurações];
+Neste caso mudamos o nome e também precisamos especificar o tipo de dados e as configurações como NOT NULL  sempre que desejamos mudar o nome
+
+tem como mudar o nome da coluna de outra forma
+ALTER TABLE nome_tabela
+RENAME COLUMN nome_antigo TO novo_nome_coluna;
+Neste caso precisamos indicar qual era o nome antigo e por o novo. Neste não precisamos modificar o tipo ou as configurações
+
+
+Para mudar o nome da tabela
+ALTER TABLE nome_tabela
+RENAME TO novo_nome;
+
+Tem como também modificar o tipo padrão de caracter e seu agrupamento da uma tabela, mesmo que o banco de dados já tem um padrão.
+
+ALTER TABLE nome_tabela
+CHARACTER SET = latin1;
+
+		Usando restrições (constraints)
+É uma restrição de algo, podendo ser chave primaria, UNIQUE e chave estrangeira
+Para criar relacionamento entre tabelas, é preciso existir uma tabela pai e uma filha, a filha vai levar um campo que irá referenciar a tabela pai. Ex:
+Uma tabela funcionarios que tenha uma tabela filhos com que tem um relacionamento.
+
+OBS: Por possuir um relacionamentos, alguns problemas podem surgir ou é preciso escolher a forma como o banco vai responder quando um registro da tabela pai for excluido, como isso afetará na filha. Se nada for  feito, isso tras o erro de um registro deletado, ex: um cliente, mas  existir dentro da tabela filha ainda cadastrado o cpf.
+
+Podemos reagir de 3 maneiras diferentes.
+1 -CASCADE: se altera/apaga no pai, vai altera/apaga na filha.
+
+2 -SET NULL:apagando no pai, o campo respectivo vai ser preenchido com NULL
+
+3 - RESTRICT: Por tabela filha ter o mesmo registro, vai ser negado modificar o registro no pai
+
+CREATE TABLE pai (
+id INT NOT NULL,
+nome VARCHAR(50),
+PRIMARY KEY (id)
+);
+CREATE TABLE fi lha (
+id INT PRIMARY KEY,
+parente_id INT,
+nome VARCHAR(50)
+);
+
+ALTER TABLE filha
+ADD CONSTRAINT FK_parente
+FOREIGN KEY (parente_id) REFERENCES pai(id);

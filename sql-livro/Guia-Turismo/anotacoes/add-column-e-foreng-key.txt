@@ -1,0 +1,33 @@
+Trabalhando em seu projeto de construção do Guia Turístico,
+neste momento, seu repositório de dados está todo testado e
+temos vários dados e relacionamentos criados, mas houve um
+requisito muito importante que foi esquecido até esta etapa. Qual é
+a língua ou línguas nativas que o país pode ter?
+Num mesmo
+país, podemos ter mais de uma língua, e o guia deve levar isso
+em consideração.
+Notamos
+um novo requisito, que é o de determinados países terem mais de
+um idioma, embora um seja determinado como o idioma oficial.
+Nessa relação, temos a cardinalidade de 1 para N, ou seja, teremos
+um país que pode ter um idioma ou mais.
+
+Uma das soluções poderá ser uma tabela:
+CREATE TABLE IF NOT EXISTS linguagemPais (
+id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+codigoPais INT(11),
+linguagem VARCHAR(30) NOT NULL DEFAULT '',
+ofi cial ENUM('Sim', 'Não') NOT NULL DEFAULT
+'Não'
+);
+
+A coluna “codigoPais” será a referência para sua tabela pai,
+nomeada “pais”.
+Porém, não está explícita a restrição que determinará a integridade
+referencial.
+
+ALTER TABLE linguagemPais
+ADD CONSTRAINT FK_linguagemPais
+FOREIGN KEY (codigoPais) REFERENCES pais(id);
+
+

@@ -1,0 +1,89 @@
+Melhorando a estrutra do banco de dados
+
+
+vamos refazer de uma forma melhor
+vamos  usar usar comando de alterar a tabela e como não cadastramos ninguem, vamos melhorar o que foi desenvolvido
+Da para apagar tabela, apagar banco e vamos resolver o problema do senhor Valdemin que dava para cadastrar a mesma pessoas varias vezes. Vamos resolver isso com chave primaria
+
+Continuamos com Godofredo, ele tem varias caracteristicas como nome, altura, peso e essas caracteristicas eram compartilhadas com sua esposa, filha.
+
+Aula passada aprendemos os comandos CREATE DATABASE [nome], CREATE TABLE [nome], USE [nome do banco]
+
+Criamos o banco sem parametro nenhum e as tabelas com alguns
+
+vamos devagarinho
+
+Vamos começar melhorando o comando CREATE DATABASE
+cria um banco de dados
+da para especificar que formato esses dados vão ter, diretamente do comando database
+
+No HTML tinha problemas com caracteres acentuados, a lingua portuguesa tem acento, mas o padrão é lingua ingles que não possui, então usamos UTF-8 para resolver isso
+
+Antes de criar o banco de dados novo, vamos primeiro apagar o banco anterior com o comando 
+
+criamos o banco de dado cadastro
+para apagar vamos no new table file(que é o primerio simbolo de papel em baixo do file)
+
+	O comando é 
+	DROP DATABASE cadastro; 
+drop- significa soltar
+
+		Agora vamos acrescentar umas coisas
+	dois parametros- que são constainers 
+	
+	CREATE DATABASE cadastro 
+	default character set utf-8
+
+	a propriedade utf-8 precisa ser em minusculo, junto com os nomes de banco e tabela
+
+	COLLATE também serve para configuração dos caracteres
+
+	comando inteiro 
+
+		create database cadastro
+
+		default character set utf8
+
+		default collate utf8_general_ci;
+
+	Agora quando criar ele já vai ter uma configuração de caractere e collate padrão
+	
+	Essa comando acaba saindo maior, mas ele tem as configurações que precisaremos usar, não tenha preguiça e faça desse jeito
+
+	Vamos agora atualizar  a estrutura da tabela com campos mais inteligentes, com tipos primitivos mais bem dimensionados
+	
+	Eles estão configurados de uma forma simples com float, char etc. É importante você otimizar já no inicio a forma como vai otimizar o armazenamento.
+	Se eu economizar alguns bytes em um campo, isso pode parecer pouco, mas estamos falando de cada registro, imagina com milhares, a economia vai fazer diferença. Essas coisas voce vai pensar quando criar um banco
+	Vamos retirar o tipo float que é generico, ele guarda do jeito que ele escolhe, vamos utilizar  o tipo decimal que vai ser mais personalizado
+	Vamos cadastrar data e não um valor, porque não é pratico por esse, porque se a pessoa fazer aniversario teria que ir la e atualizar a idade. Se eu cadastrar o dia que eu nasci, quando for na hora de mostrar minha idade, ele vai calcular a minha idade, isso é muito inteligente.
+	Vamos trabalhar com relação ao sexo também, utilizando coleção em vez de char
+	
+	Na criação da tabela vamos por configuração de caracterer padrão la no final depois dos parentes 
+DEFAULT CHARSET = utf8;
+
+	No nome continuamos com varchar e vamos por outras containers, que são regras para definir regras na criação das coisas.	
+	Começamos com not-null, por padrão querer cadastrar e não querer informar a data de nascimento, pode, mas se voce que obrigar que  a pessoa preechar um determinado campo, voce utilizar not NULL. Quero obrigar que cadastre nome da pessoa,  não tem como cadastrar sem isso
+	no sexo eu coloco ENUM('M', 'F'), - Diz que serão aceitos só dois valores, m ou f
+	ajuda a definir a estrutura de uma forma mais rigida, para que o usurio não coloque o que ele quiser
+	No char(1) a pessoa podia por 'a', agora com esse não é mais possivel fazer isso
+	Daria para por dentro do parentes m e f minusculo, mas não é recomendado
+
+	No peso vamos utilizar decimal(5,2) que dizer que o numero tem 5 digitos e que tem duas casas depois da virgula. Com isso voce economiza espaço e por qual quantidade precisa 
+
+	Uso decima(3, 2) 3 digitos, 1 antes da virgula e dois depois, porque não existe alguem com 10 metros de altura. Assim economizo e guardo só o que vou usar 
+	Na nacionalidade permanece o varchar(20) mas colocamos uma containers default 'Brasil', se ninguem por nada por padrão vai ser considerado Brasil
+
+	Diga do professor é primeiro voce se preocupa em colocar todos os campos, depois as virgulas para separar e depois os tipos de dados
+
+	OBS: Voce pode encontrar exportando ou importando bancos ver os campos com craze, isso é  usado para conseguir renomear os campos com acento, espaço, fazer de formas que não são permitidas e utilizar essas coisas não é recomendado mesmo podendo ser feito.
+	Não confundir aspas simples com craze, aspas simples em sql. Todo caractere em sql aspas simples, todas palavras de definição entre crazes
+
+	Agora só falta resolver o problema de poder cadastras varias vezes a mesma pessoa
+	Pode acontecer de no banco ter duas pessoas com o mesmo nome, mas é preciso ter um campo que não se repete, ex na academia voce tem a sua matricula, na faculdade voce tem seu ra, tem seu cadastro de pessoa fisica. Não existe duas pessoas com o mesmo cpf, não existe na faculdade dois alunos com a mesma matricula, eles são campos chaves primarias. Não vão existir dois campos com o mesmo valor
+
+	Para inserir, vamos colocar duas linhas novas, uma no inicio e outro no fim
+	Vamos criar outro campo, porque nome não da para ser chave primaria, nem, data de nascimento, sexo, peso, existe outra pessoa que também tem o mesmo valor 
+	Criaremos então um identificador numerico para as pessoas, chamado id. Colocamos not null, obrigando a pessoa acrescentar e outra container, auto_increment, quando a primeira pessoa for cadastrada, seu id vai ser 1, a segunda 2 e assim por adiante, aumentando sozinho
+	E outra coisa que vou acrescentar é lá no final, que é primary key() e dentro do parente eu coloco qual campo eu vou querer que seja a chave primaria
+	
+	RESUMO: Usamos chave primaria para não ter repetição de registro dentro do nosso banco de dados

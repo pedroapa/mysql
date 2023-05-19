@@ -1,0 +1,31 @@
+Você já tem um banco de dados com uma
+estrutura pronta e os relacionamentos criados. Com a definição
+de chaves primárias e estrangeiras, você pôde criar restrições
+em seus relacionamentos, determinando a integridade desses
+campos e regras para sua manutenção de dados.
+Porém, em
+alguns momentos, após as definições ou novos requisitos, há
+a necessidade de excluir estruturas. Após o início de um projeto
+isso deve ser revisado, mas usualmente sempre ocorrerá. Um GPS,
+por exemplo, tem como função básica determinar localizações
+utilizando o modelo de latitude e longitude.
+Será
+de vital importância poder consultar as informações de um ponto
+turístico e sua exata localização.
+Nós deixamos essa informação na fase inicial do projeto, numa tabela específica, porém, isso
+não será necessário. Altere a sua tabela de Elementos Turísticos,
+adicionando esses dois campos. Será necessário, também, alterar
+a tabela “Países”, adicionando uma nota de 0 a 10 com o nível de
+interesse para o turista (quanto mais pontos turísticos famosos,
+maior o interesse), e a tabela “Cidades”, incluindo uma lista com os
+três melhores restaurantes. Após isso, não teremos a necessidade
+de manter essa tabela e você poderá excluí-la.
+
+Para alterá-la, devemos utilizar a seguinte instrução:
+ALTER TABLE ponto_tur ADD coordenada GEOMETRY;
+
+Antes ele tinha pedido para criar uma tabela coordenadas e eu não fiz k
+
+DROP TABLE IF EXISTS coordenada;
+
+primeiro salvar o drump para depois apagar o banco de dados

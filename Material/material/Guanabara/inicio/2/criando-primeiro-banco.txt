@@ -1,0 +1,54 @@
+o curso em video não vai estudar modelo relacional
+
+vamos pegar uma pessoas
+Godofredo 
+32anos
+masc
+78.5kg
+1.83m
+Brasil
+
+essas são as caracteristicas que ele tem
+
+ele tem uma parceira chamada 
+Dolores
+30anos
+fem
+52.3kg
+1.65m
+Mexico
+
+São duas pessoas com caracteristicas semelhantes
+
+Do amor dos dois surge sua filha 
+Godolores
+3anos
+25.8kg
+0.89m
+EUA
+
+#essas 3 pessoas tem caracteristica semelhantes- caracteristica em comum:
+nome
+idade
+sexo
+peso
+altura
+nacionalidade
+
+cada um tem tem seu proprio nome, idade, altura etc que faz que cada seja uma instancia, isso faz pessoas diferentes umas das outras 
+
+OBJETIVO do banco de dados:
+Registrar instancias separadas de coisas que tem caracteristicas semelhantes
+
+usando esse padrão eu posso cadastrar qualquer tipo de pessoa, porque todas  elas terão a mesma caracteristicas
+IMPORTANTE: Tem semelhanças na caracteristicas e não em valores(mesma idade por exemplo)
+
+podemos pegar todas essas pessoas e por em um conteiner e chama-lo de pessoas
+to vez que querer guardar uma pessoas vamos guardar ai
+Pessoas dentro desse conteiner vão ter essa caracteristicas
+*algumas dessas caracteristicas podem ser opcionais, mas existe a possiblidade de cadastro dela
+
+Podemos criar conteiners diferentes para coisas diferentes, por ex:
+posso ter um que coloque todas as caracteristicas de jogos
+
+pessoas e jogos possuem caracteristicas diferentes e por isso precisam estar em conteiners diferentes

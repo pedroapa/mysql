@@ -1,0 +1,159 @@
+SELECT * FROM convidado;
+Toda a tabela será exibida.
+
+SELECT * FROM convidado WHERE nome LIKE ‘A%’;
+Exibirá todos os convidados com o nome iniciando com ‘A’.
+
+UPDATE convidado
+SET estudante = 'Sim'
+WHERE nome = 'Lebrencio Grulher'
+AND nascimento = '08-Jul-1990';
+O comando acima atualiza como sendo estudantes todos os
+convidados de nome Lebrencio Grulher que tenham nascido na
+data de 08 de Julho de 1990. Homônimos de Lebrencio Grulher que
+tenham nascido em datas diferentes ou outros convidados que não
+se chamam Lebrencio Grulher mas que tenham nascido em 08 de
+Julho de 1990 não serão atualizados para a condição de estudante.
+
+a cláusula WHERE especifica as condições que
+identificam quais linhas devem ser atualizadas.
+
+Isso mostra a atenção que
+você deve ter sobre determinadas ações e, por bom hábito, sempre
+que você utilizar instruções de atualização ou exclusão, utilize uma
+condição (WHERE) para limitar a ação da instrução.
+
+UPDATE convidado
+SET estudante = 'Sim'
+WHERE nascimento < '08-Jul-1990'
+ORDER BY nome;
+Esse comando vai atualizar todos os cadastrados nascidos antes
+de 08 de Julho de 1990 como sendo estudantes.
+
+Quando adicionamos um limite por meio da cláusula LIMIT , o
+que teremos é uma limitação nas atualizações. No caso do comando
+acima, se quisermos limitar o número de atualização aos primeiros 10
+nomes (em ordem alfabética), teremos:
+UPDATE convidado
+SET estudante = 'Sim'
+WHERE nascimento < '08-Jul-1990'
+LIMIT 10
+ORDER BY nome;
+
+Se uma tabela contiver 1 e 2 na coluna ID (primary key – chave primária)
+e 1 for atualizado para 2 antes de 2 ser atualizado para 3, ocorrerá um
+erro. Para evitar esse problema, inclua uma cláusula ORDER BY para
+fazer com que as linhas com valores de ID maiores sejam atualizadas
+antes daquelas com valores menores:
+UPDATE tabela SET ID = ID + 1 ORDER BY ID
+DESC;
+
+/*Se eu querer adicionar +1 a todos os IDs de um banco de dados cheio de registros */
+
+Tai um desafio, que por phpMyAdmin não consegueria
+
+Desafio para fazer UPDATE de duas tabelas ao mesmo tempo, não sei se iss faz muito sentido k
+
+/*Exemplo der INSERÇÃO de mais de uma tabela ao mesmo tempo*/
+Você também pode executar operações UPDATE abrangendo várias
+tabelas. No entanto, você não pode usar ORDER BY ou LIMIT com um
+UPDATE de várias tabelas. Aqui está um exemplo juntando duas tabelas:
+UPDATE lista, produto SET lista.preco =
+produto.preco
+WHERE lista.id = produto.id;
+Em nossa tabela “conv¬idado”, vamos executar a
+seguinte instrução:
+UPDATE convidado SET estudante = 'Não'
+WHERE id = 1;
+
+Quando declarada, a condição é avaliada a cada linha, e se verdadeira
+ela é excluída. Exemplo:
+DELETE FROM convidados
+WHERE estudante = 'Sim'
+ORDER BY nome
+LIMIT 10;
+
+comando acima deleta os dez primeiros estudantes (por
+ordem alfabética) classificados como estudantes.
+Se a cláusula ORDER BY estiver presente, as linhas serão excluídas
+na ordem especificada
+
+Se a instrução DELETE incluir uma cláusula ORDER BY, as linhas
+serão excluídas na ordem especificada pela cláusula. Quando
+utilizadas em conjunto, as cláusulas ORDER BY e LIMIT são bastante
+uteis.
+
+DELETE FROM log_usuario WHERE usuario = 'rm'
+ORDER BY datahora_acao LIMIT 1;
+A instrução acima localiza linhas correspondentes ao que foi
+especificado na cláusula WHERE, classificando-as pela coluna “datahora_
+acao” do tipo DATETIME e excluindo a primeira, ou seja, a mais antiga.
+
+ORDEM BY não é responsavel por organizar apenas na hora de vai mostrar na tela com o comando SELECT, ele também dita qual ordem as alterações vão seguir, ex: querer atualizar o id de todos os registros somando +1. Essa modificação precisa acontecer primeiro nos registros com ID maior, para que não ocorra erros, tipo id 1 for atualizado para 2, antes do id 2 para 3. 
+tem que começar na ordem descrescente
+
+ia ficar dois id 2
+
+	RESUMO
+Vai acontecer de ter que precisar mexer na estrutura ou nos dados que  foram salvados, por causa de erros ou de coisa que devem ser acrescentadas.
+
+	Na seção 1 foca na atualização ou excluir de dados que vão ser cadastrados no banco.
+	Aprendemos que para testar se um banco esta certo, é preciso inserir dados para ver como eles se comportam e a sintaxe dessa manipulação que é inserir dados com o comando INSERT INTO
+	Onde colocamos
+	INSERT INTO nome_tabela
+	(campo1, campo2)
+	VALUE	
+	(valor1, valor2)
+	
+Caso queira inserir varios registros de uma só vez, é so colocar virgula depois do parentes e abrir um novo e por os novo valores até por virgula e ponto na ultima tupla(registro).
+
+	O comando UPDATE atualiza os registro que são foram salvos no banco. É importante usa-lo junto com o WHERE('onde', que é uma condição) para evitar de alterar todos os registros cadastrados naquela tabela. Ex:
+	UPDATE nome_tabela
+	SET campo = [valor novo]
+	WHERE campo = [valor identificador]';
+
+	Alem desses constainers, podemos usar outros, o que eu ja aprendi é o LIMIT que limita a quantidade de linhas(registros) alterados. EX:
+	UPDATE estudante
+	SET  prouni = 'recusado'
+	WHERE  votou = 'Bolsonario'
+	LIMITE 1;
+
+	Neste exemplo, mesmo que tenha cadastrado só bolsominion, irá atualizar apenas um registro. Vai ser qual ele achar primeiro, porque ele percorre uma linha de cada vez, vendo a condição 	WHERE e qual satifazer a condição primeiro vai ser atualizado.
+
+	Para evitar dele ir verificando desde a primeira linha até a ultima testando a condição de WHERE, podemos por um ORDEM BY
+para fazer um ordenação antes de os testes. Posso por um ORDEM BY assim por exemplo
+	UPDATE estudante
+	SET  prouni = 'recusado'
+	WHERE  votou = 'Bolsonario'
+	LIMITE 1
+	ORDEM BY data_nascimento < 1975;
+
+	Que vai deletar o primeiro bolsominio velho que achar
+
+	Para deletar uma linha inteira (um registro) usamos a sintaxe
+	DELETE FROM nome_tabela
+	WHERE (condição)
+	LIMIT (limite de linhas alteradas)
+	ORDEM BY (Comece por onde?)
+
+	ou simplesmente: 
+	DELETE FROM nome_tabela
+	WHERE campo_identificador = (valor)
+	LIMIT (numero);
+
+	A primeira voce faz varias coisas e uma, e não precisa saber o id do registro que quer ser apagado
+	O segundo voce ja sabe e usa isso para ser direto
+
+ UPADATE e . N
+
+UPDATE convidado
+SET cadeira = @numero := @numero + 1
+ORDER BY nome;
+Essa instrução irá ordenar a tabela por nome, em ordem alfabética,
+e passará a atribuir à coluna cadeira o número armazenado na
+variável “@numero”.
+
+exercicio:
+1e
+2d
+3d

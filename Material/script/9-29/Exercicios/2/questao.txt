@@ -1,0 +1,32 @@
+"Quantos gafanhotos homens e quantas mulheres nasceram após 01/jan/2005?"
+
+entao parece que tenho que usar dois selects, um para descobrir quantidades de homens e outro mulheres e depois mostrar as mesmas informações dos dois
+
+entao
+
+select (qtd_homens), (qtd_mulheres), onde nasceram neste tempo
+
+vou selecionar o que?
+usar o count
+
+vou filtrar o que? 
+se a data acima de 1-1-2005
+
+vou precisar agrupar?
+
+na teoria para contar os homens, eu precisaria agrupar por sexo e mostrar só quem tem o sexo masculino
+
+prototipo:
+
+conseguir fazer um questionamento que mostre a quantidade de homens que nasceram depois de 1-1-2005
+
+pode ter acontecido de eu não ter entendido de primeira o que a questão pede
+escrito diz pra saber tanto de homens, quanto mulheres e não que separados...
+
+uma coisa é certa, ta ambigua, 1° sentido: mostrar quantos homens e depois quantas mulheres nasceram depois
+e 2º considerando os dois juntos, quantos nasceram depois de uma data.
+
+O segundo faz mais sentido pelo que aprendemos ate agora
+
+
+

@@ -1,0 +1,45 @@
+Eu estou tentando fazer um exercicio, mas é meio complicado, então eu separei em outro mais simples e depois quero juntar.
+
+O exercicio quer a quantidade de homens e mulheres que nasceram depois de uma data
+
+Estou querendo saber quantidade de homens que nasceram primeiro, assim aprenderia como fazer para depois juntar com a quantidade de mulheres
+
+Comando:
+
+select nome, count(*) from gafanhotos
+group by sexo
+having sexo = 'M';
+
+S:
+
+Daniel Morais	39
+
+Eu pensei que iria sair varios nomes e a quantidade, mas analizando agora não faz muito sentido mesmo,
+porque eu pedi para ele contar todos os registros do que foi selecionado, agrupado e tendo coisas do having e o resultado foram 39 homens. 
+
+Vou testar para ver se tem essa quantidade de homens mesmo
+
+/* "Selecione contabilizando a quantidade de homens da tabela gafanhotos"*/
+select count(*) from gafanhotos
+where sexo = 'M';
+
+S:
+
+    count(*)
+    39
+
+Blz, onde vai ficar a condição de quem nasceu depois? No where ou having? To achando que o no where porque ja to filtrando todos os registro por idade
+
+outro problema é na hora de apresentar a resposta, teria que utilizar dois count? Se sim como faria para cada count mostrar só sua resposta?
+
+descobri que o select mostra o que voce mandar. Este codigo:
+
+select 15 from gafanhotos;
+
+faz aparecer 15 registros com o resultado 15
+
+entao quando eu usar o select como parametro, tenho que achar um lugar certo para ele. 
+Se usar no SELECT, uma alternativa para não sair varias linhas repetidas é usando o comando distinct
+
+talvez seja outro lugar que é para colocar
+
